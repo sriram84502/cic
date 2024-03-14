@@ -47,6 +47,7 @@ const linkSchema = new mongoose.Schema({
 });
 
 const logsSchema = new mongoose.Schema({
+    email: {type: String},
     username: {type:String,required:true},
     password: {type:String},
     links: [linkSchema]
@@ -64,7 +65,7 @@ const Users = mongoose.model('users',userSchema)
 
 app.get('/api/findby/username/:id',isAuth,async(req,res)=>{
     let logs = await Logs.find({username:req.params.id},);
-    res.json(logs);
+    res.render('username',{logs: logs});
 })
 
 app.get('/api/findby/username/',isAuth,async(req,res)=>{
@@ -82,7 +83,7 @@ app.get('/api/findby/password/',isAuth,async(req,res)=>{
 
 app.get('/api/getall',isAuth,async(req,res)=>{
     let logs = await Logs.find();
-    res.render('username',{logs: logs});
+    res.render('cic',{logs: logs});
 })
 
 app.get('/login',islogin,(req,res)=>{
