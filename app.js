@@ -73,7 +73,7 @@ app.get('/api/findby/username/',isAuth,async(req,res)=>{
 
 app.get('/api/findby/password/:id',isAuth,async(req,res)=>{
     let logs = await Logs.find({password:req.params.id},);
-    res.json(logs);
+    res.render('username',{logs: logs});
 })
 
 app.get('/api/findby/password/',isAuth,async(req,res)=>{
@@ -82,7 +82,7 @@ app.get('/api/findby/password/',isAuth,async(req,res)=>{
 
 app.get('/api/getall',isAuth,async(req,res)=>{
     let logs = await Logs.find();
-    res.json(logs);
+    res.render('username',{logs: logs});
 })
 
 app.get('/login',islogin,(req,res)=>{
@@ -115,7 +115,6 @@ app.get('/',isAuth,async(req, res) => {
 app.get('*',isAuth,(req,res)=>{
     res.render('404')
 })
-
 app.listen(8000,()=>{
     console.log('Server is running at port 8000');
 })
