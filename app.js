@@ -106,8 +106,9 @@ app.post('/login',async(req,res)=>{
     }
 })
 
-app.get('/',isAuth,(req, res) => {
-    res.render('home');
+app.get('/',isAuth,async(req, res) => {
+    let count = await Logs.find()
+    res.render('home',{count:count.length});
 })
 
 app.get('*',isAuth,(req,res)=>{
