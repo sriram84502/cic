@@ -107,8 +107,9 @@ app.post('/login',async(req,res)=>{
 })
 
 app.get('/',isAuth,async(req, res) => {
-    let count = await Logs.find()
-    res.render('home',{count:count.length});
+    let count = await Logs.find();
+    let name = req.session.user.name;
+    res.render('home',{count:count.length,name:name.toUpperCase()});
 })
 
 app.get('*',isAuth,(req,res)=>{
