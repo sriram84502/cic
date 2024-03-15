@@ -74,6 +74,7 @@ app.get('/api/findby/username/',isAuth,async(req,res)=>{
 
 app.get('/api/findby/password/:id',isAuth,async(req,res)=>{
     let logs = await Logs.find({password:req.params.id},);
+    console.log(logs);
     res.render('username',{logs: logs});
 })
 
